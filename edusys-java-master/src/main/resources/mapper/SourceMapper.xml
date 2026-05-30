@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="online.weiyin.edusys.mapper.SourceMapper">
+
+    <update id="updateDeptIdByCondition">
+        update ${year} set dept_id = '${newDeptId}'
+        <where>
+            <if test="academy != null and academy != ''">
+                AND academy like '${academy}'
+            </if>
+            <if test="clazz != null and clazz != ''">
+                AND clazz like '${clazz}'
+            </if>
+            <if test="name != null and name != ''">
+                AND name like '${name}'
+            </if>
+            <if test="sexual != null and sexual != ''">
+                AND sexual like '${sexual}'
+            </if>
+            <if test="id != null and id != ''">
+                AND id like '${id}'
+            </if>
+            <if test="deptId != null and deptId != ''">
+                AND dept_id like '${deptId}'
+            </if>
+        </where>
+    </update>
+    <update id="updateDeptIdById">
+        update ${year} set dept_id = '${newDeptId}' where id = '${id}'
+    </update>
+    <delete id="deleteAloneById">
+        delete from ${year} where id = '${id}'
+    </delete>
+</mapper>
